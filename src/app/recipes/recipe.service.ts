@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { Recipe } from "./recipe.model";
-import { Ingredient } from "../shared/ingredient.model";
+import { Recipe } from './recipe.model';
+import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
-import { Subject } from "rxjs/Subject";
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class RecipeService {
@@ -11,15 +11,15 @@ export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
-    new Recipe('Banana Bread', 
-               'A beautiful banana bread', 
+    new Recipe('Banana Bread',
+               'A beautiful banana bread',
                '//c1.staticflickr.com/6/5138/5529538337_86e82ce346_b.jpg',
                [
                  new Ingredient('Eggs', 5),
                  new Ingredient('Water', 7)
                ]),
-    new Recipe('Apple Pie', 
-               'An Apple Pie', 
+    new Recipe('Apple Pie',
+               'An Apple Pie',
                'https://upload.wikimedia.org/wikipedia/commons/4/4b/Apple_pie.jpg',
                [
                 new Ingredient('Cinnamon', 1),
