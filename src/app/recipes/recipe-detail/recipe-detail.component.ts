@@ -19,7 +19,8 @@ export class RecipeDetailComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private store: Store<fromRecipe.FeatureState>) { }
+              private store: Store<fromRecipe.FeatureState>) {
+  }
 
   ngOnInit() {
     this.route.params
@@ -35,16 +36,21 @@ export class RecipeDetailComponent implements OnInit {
     this.store.select('recipes')
       .pipe(take(1))
       .subscribe((recipeState: fromRecipe.State) => {
-        this.store.dispatch(new ShoppingListActions.AddIngredients(recipeState.recipes[this.id].ingredients));
+        this.store.dispatch(new ShoppingListActions.AddIngredients(
+          recipeState.recipes[this.id].ingredients)
+        );
       });
+
   }
 
   onEditRecipe() {
     this.router.navigate(['edit'], {relativeTo: this.route});
+    // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
   onDeleteRecipe() {
     this.store.dispatch(new RecipeActions.DeleteRecipe(this.id));
-    this.router.navigate(['./recipes']);
+    this.router.navigate(['/recipes']);
   }
+
 }

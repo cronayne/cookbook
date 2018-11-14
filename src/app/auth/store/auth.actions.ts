@@ -8,33 +8,33 @@ export const LOGOUT = 'LOGOUT';
 export const SET_TOKEN = 'SET_TOKEN';
 
 export class TrySignup implements Action {
-    readonly type = TRY_SIGNUP;
+  readonly type = TRY_SIGNUP;
 
-    constructor(public payload: {username: string, password: string}) {}
+  constructor(public payload: {username: string, password: string}) {}
 }
 
 export class TrySignin implements Action {
-    readonly type = TRY_SIGNIN;
+  readonly type = TRY_SIGNIN;
 
-    constructor(public payload: {username: string, password: string}) {}
+  constructor(public payload: {username: string, password: string}) {}
 }
 
 export class Signup implements Action {
-    readonly type = SIGNUP;
+  readonly type = SIGNUP;
 }
 
 export class Signin implements Action {
-    readonly type = SIGNIN;
+  readonly type = SIGNIN;
 }
 
 export class Logout implements Action {
-    readonly type = LOGOUT;
+  readonly type = LOGOUT;
 }
 
 export class SetToken implements Action {
-    readonly type = SET_TOKEN;
+  readonly type = SET_TOKEN;
 
-    constructor(public payload: string) {}
+  constructor(public payload: string) {}
 }
 
 export type AuthActions = Signup | Signin | Logout | SetToken | TrySignup | TrySignin;

@@ -1,4 +1,9 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -30,7 +35,7 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
             this.slForm.setValue({
               name: this.editedItem.name,
               amount: this.editedItem.amount
-            });
+            })
           } else {
             this.editMode = false;
           }
@@ -42,9 +47,9 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     const value = form.value;
     const newIngredient = new Ingredient(value.name, value.amount);
     if (this.editMode) {
-      this.store.dispatch(new ShoppingListActions.UpdateIngredient({ingredient: newIngredient}));
+      this.store.dispatch(new ShoppingListActions.UpdateIngredient({ingredient: newIngredient}))
     } else {
-      this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient));
+      this.store.dispatch(new ShoppingListActions.AddIngredient(newIngredient))
     }
     this.editMode = false;
     form.reset();
@@ -59,8 +64,10 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ShoppingListActions.DeleteIngredient());
     this.onClear();
   }
+
   ngOnDestroy() {
     this.store.dispatch(new ShoppingListActions.StopEdit());
     this.subscription.unsubscribe();
   }
+
 }

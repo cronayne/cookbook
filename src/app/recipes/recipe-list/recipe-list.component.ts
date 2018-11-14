@@ -15,13 +15,14 @@ export class RecipeListComponent implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private store: Store<fromRecipe.FeatureState>) { }
+              private store: Store<fromRecipe.FeatureState>) {
+  }
 
   ngOnInit() {
     this.recipeState = this.store.select('recipes');
   }
 
   onNewRecipe() {
-    this.router.navigate(['new'], {relativeTo: this.route} );
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 }

@@ -42,7 +42,8 @@ export class RecipeEditComponent implements OnInit {
     if (this.editMode) {
       this.store.dispatch(new RecipeActions.UpdateRecipe({
         index: this.id,
-        updatedRecipe: this.recipeForm.value}));
+        updatedRecipe: this.recipeForm.value
+      }));
     } else {
       this.store.dispatch(new RecipeActions.AddRecipe(this.recipeForm.value));
     }
@@ -69,10 +70,6 @@ export class RecipeEditComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
-  getControls() {
-    return (<FormArray>this.recipeForm.get('ingredients')).controls;
-  }
-
   private initForm() {
     let recipeName = '';
     let recipeImagePath = '';
@@ -81,8 +78,8 @@ export class RecipeEditComponent implements OnInit {
 
     if (this.editMode) {
       this.store.select('recipes')
-       .pipe(take(1))
-       .subscribe((recipeState: fromRecipe.State) => {
+        .pipe(take(1))
+        .subscribe((recipeState: fromRecipe.State) => {
           const recipe = recipeState.recipes[this.id];
           recipeName = recipe.name;
           recipeImagePath = recipe.imagePath;
@@ -100,7 +97,7 @@ export class RecipeEditComponent implements OnInit {
               );
             }
           }
-       });
+        });
     }
 
     this.recipeForm = new FormGroup({
@@ -109,6 +106,10 @@ export class RecipeEditComponent implements OnInit {
       'description': new FormControl(recipeDescription, Validators.required),
       'ingredients': recipeIngredients
     });
+  }
+
+  getControls() {
+    return (<FormArray>this.recipeForm.get('ingredients')).controls;
   }
 
 }
